@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function renderMoodSelection() {
         root.innerHTML = `
-            <div class="container">
+            <div class="container" id="moodSelection">
                 <h1>What's Your Mood Today? 🤔</h1>
                 <button data-mood="Happy">😃 Happy</button>
                 <button data-mood="Angry">😡 Angry</button>
@@ -35,5 +35,10 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = `mood.html?mood=${mood}`;
     }
 
-    renderWelcomeScreen();
+    // Check if the user came back to the mood selection screen
+    if (window.location.hash === "#moodSelection") {
+        renderMoodSelection();
+    } else {
+        renderWelcomeScreen();
+    }
 });
