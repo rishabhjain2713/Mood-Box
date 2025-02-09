@@ -57,12 +57,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 <ul>
                     ${moodTasks[mood].map(task => `<li>${task}</li>`).join('')}
                 </ul>
-                <button id="backBtn">⬅️ Back to Home</button>
+                <button id="backBtn">⬅️ Back to Mood Selection</button>
             </div>
         `;
 
         document.getElementById("backBtn").addEventListener("click", () => {
-            window.location.href = "index.html";
+            window.location.href = "index.html#moodSelection";
         });
     } else {
         moodRoot.innerHTML = `<h1>Invalid Mood Selection</h1>`;
