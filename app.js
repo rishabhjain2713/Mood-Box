@@ -16,13 +16,15 @@ document.addEventListener("DOMContentLoaded", function() {
         root.innerHTML = `
             <div class="container">
                 <h1>What's Your Mood Today? 🤔</h1>
-                <button data-mood="Happy">😃 Happy</button>
-                <button data-mood="Angry">😡 Angry</button>
-                <button data-mood="Sad">😢 Sad</button>
-                <button data-mood="Stressed">😵‍💫 Stressed</button>
-                <button data-mood="Bored">😐 Bored</button>
-                <button data-mood="Irritated">😠 Irritated</button>
-                <button data-mood="IDontKnow">🤷‍♂️ I Don't Know</button>
+                <div id="moodButtons">
+                    <button data-mood="Happy">😃 Happy</button>
+                    <button data-mood="Angry">😡 Angry</button>
+                    <button data-mood="Sad">😢 Sad</button>
+                    <button data-mood="Stressed">😵‍💫 Stressed</button>
+                    <button data-mood="Bored">😐 Bored</button>
+                    <button data-mood="Irritated">😠 Irritated</button>
+                    <button data-mood="IDontKnow">🤷‍♂️ I Don't Know</button>
+                </div>
                 <div id="taskContainer"></div>
             </div>
         `;
@@ -71,14 +73,20 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         const taskContainer = document.getElementById("taskContainer");
-        taskContainer.innerHTML = `
-            <div class="card">
+        const moodElement = document.getElementById(`mood-${mood}`);
+
+        if (!moodElement) {
+            const taskElement = document.createElement("div");
+            taskElement.classList.add("card");
+            taskElement.id = `mood-${mood}`;
+            taskElement.innerHTML = `
                 <h2>Your Mood: ${mood} 😃</h2>
                 <ul>
                     ${moodTasks[mood].map(task => `<li>${task}</li>`).join('')}
                 </ul>
-            </div>
-        `;
+            `;
+            taskContainer.appendChild(taskElement);
+        }
     }
 
     renderWelcomeScreen();
