@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function renderWelcomeScreen() {
         root.innerHTML = `
             <div class="container">
-                <h1>Welcome Gracy, Let's Play! 🎉</h1>
-                <p>Let's See How We Can Enlighten Your Mood.</p>
+                <h1>Welcome Gracy! 🎭</h1>
+                <p>Let's play and see how we can enlighten your mood!</p>
                 <button id="startBtn">Let's Start</button>
+                <footer>You can call me anytime you want ❤️</footer>
             </div>
-            <footer>You Can Call Me Anytime You Want</footer>
         `;
         document.getElementById("startBtn").addEventListener("click", renderMoodSelection);
     }
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <button data-mood="Bored">😐 Bored</button>
                 <button data-mood="Irritated">😠 Irritated</button>
                 <button data-mood="IDontKnow">🤷‍♂️ I Don't Know</button>
+                <footer>You can call me anytime you want ❤️</footer>
             </div>
-            <footer>You Can Call Me Anytime You Want</footer>
         `;
 
         document.querySelectorAll("button[data-mood]").forEach(button => {
