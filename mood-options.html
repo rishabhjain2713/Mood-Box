@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <footer>You can call me anytime you want.</footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const root = document.getElementById("root");
@@ -36,4 +37,30 @@
 
             if (mood && moodOptions[mood]) {
                 root.innerHTML = `
-                    <div class="containe
+                    <div class="container">
+                        <h1>Your Mood: ${mood} 😃</h1>
+                        <ul>
+                            ${moodOptions[mood].map(option => 
+                                `<li><button class="option-btn" data-redirect="${option.redirect}">${option.text}</button></li>`
+                            ).join('')}
+                        </ul>
+                        <button id="backBtn">⬅️ Back</button>
+                    </div>
+                `;
+
+                document.querySelectorAll(".option-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        window.location.href = this.dataset.redirect;
+                    });
+                });
+
+                document.getElementById("backBtn").addEventListener("click", function () {
+                    window.location.href = "mood-selection.html";
+                });
+            } else {
+                root.innerHTML = "<h1>Invalid Mood! Please go back and try again.</h1>";
+            }
+        });
+    </script>
+</body>
+</html>
