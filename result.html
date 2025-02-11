@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Choice, Gracy!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="message"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const option = urlParams.get("option");
+
+            const messages = {
+                "Watch Friends": "Nice Choice, Gracy! Enjoy Friends (S05E14). 🍿",
+                "Big Bang Theory": "Great Pick! The Big Bang Theory (S02E11) will make you laugh! 😂",
+                "Learning": "Awesome! Learning something new is always fun! 🎓",
+                "Breathe": "Good decision, Gracy! Take deep breaths and stay calm. 🌬️",
+                "Listen": "You're wise! Listening without reacting is a great skill. 👂",
+                "Gym": "Let's go! Exercise will boost your mood. 💪",
+                "Shower": "Refreshing! A shower will lighten your mood. 🚿",
+                "Mirror Talk": "Self-talk is powerful! You got this, Gracy! 💖",
+                "Food": "Yum! Enjoy your meal, Gracy. 🍔🥗 (Order here: <a href='https://www.zomato.com/' target='_blank'>Zomato</a>)",
+                "Call Gracy": "I'm waiting for your call! 📞 <a href='tel:+123456789'>Call Me</a>",
+                "Hanuman Mandir": "Blessings await! Find your peace. 🙏 <a href='https://maps.google.com?q=Hanuman Mandir CP' target='_blank'>Get Directions</a>"
+            };
+
+            document.getElementById("message").innerHTML = `
+                <div class="container">
+                    <h1>${messages[option] || "Great choice, Gracy! 😊"}</h1>
+                    <button onclick="window.location.href='mood-selection.html'">Back to Moods</button>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
