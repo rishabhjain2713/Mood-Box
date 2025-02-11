@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Options</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const root = document.getElementById("root");
+            const urlParams = new URLSearchParams(window.location.search);
+            const mood = urlParams.get("mood");
+
+            const moodOptions = {
+                Happy: [
+                    { text: "Watch Friends (S05E14)", type: "message" },
+                    { text: "Watch Big Bang Theory (S02E11)", type: "message" },
+                    { text: "Start Learning Something", type: "message" }
+                ],
+                Angry: [
+                    { text: "Try to Breathe", type: "message" },
+                    { text: "Listen without Reacting", type: "message" },
+                    { text: "Hit the Gym", type: "message" },
+                    { text: "Take a Shower", type: "message" }
+                ],
+                Sad: [
+                    { text: "Look in the Mirror and Talk to Yourself", type: "message" },
+                    { text: "Eat Something Delicious (Order Here)", type: "link", link: "https://www.zomato.com/" },
+                    { text: "Call me for Timezone Fun!", type: "call" },
+                    { text: "Visit CP Hanuman Mandir", type: "map", location: "Hanuman Mandir CP" }
+                ],
+                Stressed: [
+                    { text: "Relax & Meditate", type: "message" },
+                    { text: "Listen to a Podcast", type: "link", link: "https://open.spotify.com/show/706hylM6zaDW8LrrYxcggQ" },
+                    { text: "Read 'The Magic' Book", type: "link", link: "https://books.google.co.ls/books?id=EQg37fxM1SwC" }
+                ],
+                Bored: [
+                    { text: "Go to DIY for Shopping", type: "map", location: "DIY Store" },
+                    { text: "Talk about Business Ideas", type: "message" }
+                ],
+                Irritated: [
+                    { text: "Meditate", type: "message" },
+                    { text: "Talk to Akshat", type: "call" },
+                    { text: "Watch ThinkSchool on YouTube", type: "link", link: "https://www.youtube.com/c/ThinkSchool" }
+                ],
+                IDontKnow: [
+                    { text: "Join a Video Call", type: "link", link: "https://meet.google.com/etk-hfpd-voh" }
+                ]
+            };
+
+            if (mood && moodOptions[mood]) {
+                root.innerHTML = `
+                    <div class="container">
+                        <h1>Your Mood: ${mood} 😃</h1>
+                        <ul>
+                            ${moodOptions[mood].map(option => {
+                                if (option.type === "message") {
+                                    return `<li>${option.text} - <span class="nice-choice">Nice Choice, Gracy! 😊</span></li>`;
+                                } else if (option.type === "link") {
+                                    return `<li><a href="${option.link}" target="_blank">${option.text}</a></li>`;
+                                } else if (option.type === "call") {
+                                    return `<li><a href="tel:+123456789">📞 Call Me Now</a></li>`;
+                                } else if (option.type === "map") {
+                                    return `<li><a href="https://maps.google.com?q=${option.location}" target="_blank">📍 Get Directions</a></li>`;
+                                }
+                            }).join('')}
+                        </ul>
+                        <button id="backBtn">⬅️ Back</button>
+                    </div>
+                `;
+
+                document.getElementById("backBtn").addEventListener("click", function () {
+                    window.location.href = "mood-selection.html";
+                });
+            } else {
+                root.innerHTML = "<h1>Invalid Mood! Please go back and try again.</h1>";
+            }
+        });
+    </script>
+</body>
+</html>
