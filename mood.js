@@ -1,89 +1,64 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const moodRoot = document.getElementById("moodRoot");
+document.addEventListener("DOMContentLoaded", function () {
+    const root = document.getElementById("root");
 
     const urlParams = new URLSearchParams(window.location.search);
     const mood = urlParams.get("mood");
 
     const moodTasks = {
         Happy: [
-            "Watch Friends – 'The One Where Everybody Finds Out' (S05E14)",
-            "Listen to a happy playlist (E.g., 'Good Vibes Only' on Spotify)",
-            "Write down 3 things you’re grateful for today",
-            "Go for a short walk and enjoy the fresh air",
-            "🎶 Listen to a happy playlist (E.g., 'Good Vibes Only' on Spotify).",
-            "📝 Write down 3 things you’re grateful for today.",
-            "🏞️ Go for a short walk and enjoy the fresh air."
+            "Watch <b>Friends</b> – <i>“The One Where Everybody Finds Out” (S05E14)</i>",
+            "Watch <b>The Big Bang Theory</b> – <i>“The Bath Item Gift Hypothesis” (S02E11)</i>",
+            "Start Learning Something That Motivates You"
         ],
         Angry: [
-            "Try to Breathe and Calm Down",
-            "Listen to Others Without Reacting",
-            "Play a stress-relief mobile game (E.g., Color Match, Fruit Ninja)",
-            "Scream into a pillow or sing loudly",
-            "🧊 Hold an ice cube in your hand for 30 seconds—this can reset your mind.",
-            "🎮 Play a stress-relief mobile game (E.g., Color Match, Fruit Ninja).",
-            "🎤 Scream into a pillow or sing loudly—release emotions in a fun way!"
+            "Try to Breathe",
+            "Listen to others without reacting—you will feel better later.",
+            "Hit the gym or do some exercise at home.",
+            "Take a shower—it will lighten your mood."
         ],
         Sad: [
-            "Look in the Mirror and Motivate Yourself",
-            "Write down your feelings in a journal—let it all out!",
-            "Do a quick workout to boost endorphins",
-            "Watch funny pet videos to feel instantly better",
-            "📔 Write down your feelings in a journal—let it all out!",
-            "🏋️ Do a quick workout to boost endorphins (e.g., 5 pushups or a dance session).",
-            "🐶 Watch funny pet videos to feel instantly better."
+            "Go to the mirror and talk to yourself—this is not the end!",
+            "Eat something yummy (Bill is on me 😄) 🍕 <a href='https://www.zomato.com/' target='_blank'>Order Here</a>",
+            "Call me and let's go to Timezone for some fun! 📞 <a href='tel:+123456789'>Call Now</a>",
+            "Let's visit <b>CP Hanuman Mandir</b> 🚗 <a href='https://maps.google.com?q=Hanuman+Mandir+CP' target='_blank'>Open in Maps</a>"
         ],
         Stressed: [
-            "Relax and Meditate",
-            "Read 2 pages of an inspiring book (E.g., Atomic Habits)",
-            "Make a cup of herbal tea—calms the mind",
-            "Walk barefoot on grass for 5 minutes (Science-backed stress relief!)",
-            "📖 Read 2 pages of an inspiring book (E.g., Atomic Habits).",
-            "🍵 Make a cup of herbal tea—calms the mind.",
-            "🌱 Touch a plant—nature reduces stress instantly.",
-            "🚶‍♀️ Walk barefoot on grass for 5 minutes (Science-backed stress relief!)."
+            "Relax and meditate for a while—leave everything behind.",
+            "Listen to this Podcast 🎧 <a href='https://open.spotify.com/show/706hylM6zaDW8LrrYxcggQ' target='_blank'>Click Here</a>",
+            "Listen to <b>Hanuman Chalisa</b> 🙏 <a href='https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx' target='_blank'>Click Here</a>",
+            "Read <b>The Magic</b> book 📖 <a href='https://books.google.co.ls/books?id=EQg37fxM1SwC' target='_blank'>Read Now</a>"
         ],
         Bored: [
-            "Read Something Motivational",
-            "Try a new language for fun (Duolingo challenge for 5 minutes)",
-            "Create a digital vision board (Pinterest / Canva)",
-            "Try a random online puzzle or trivia game (E.g., Akinator, GeoGuessr)",
-            "🎧 Try a new language for fun (Duolingo challenge for 5 minutes).",
-            "🖼️ Create a digital vision board (Pinterest / Canva).",
-            "🚀 Try a random online puzzle or trivia game (E.g., Akinator, GeoGuessr)."
+            "Read something that makes you motivated.",
+            "Let's go to <b>DIY</b> for shopping! 🛍️ <a href='https://maps.google.com?q=DIY+store' target='_blank'>Open in Maps</a>",
+            "Let's talk about some business ideas and how we can work on them."
         ],
         Irritated: [
-            "Meditate and Breathe",
-            "Do 5 minutes of stretching or yoga (Tension release)",
-            "Write a random kind message to someone (Shifts mindset to positive)",
-            "Color something (Even a quick doodle helps!)",
-            "🔥 Do 5 minutes of stretching or yoga (Tension release).",
-            "💌 Write a random kind message to someone (Shifts mindset to positive).",
-            "🌈 Color something (Even a quick doodle helps!)."
+            "Try to keep your calm—meditate 🧘",
+            "Talk with Akshat and see what's going on in his life. 📞 <a href='tel:+123456789'>Call Now</a>",
+            "Don't get angry over little things. Stay strong!",
+            "Watch this amazing YouTube channel 📺 <a href='https://www.youtube.com/c/ThinkSchool' target='_blank'>Think School</a>"
         ],
         IDontKnow: [
-            "Join a Video Call and Talk it Out: <a href='https://meet.google.com/etk-hfpd-voh' target='_blank'>Join Now</a>",
-            "Roll an online dice (1-6, whatever number you get, do something different)",
-            "Click on a 'Random' Wikipedia page and learn something new",
-            "Go outside and take a different route than usual (Breaks routine)"
+            "Join a video call with me! 📹 <a href='https://meet.google.com/etk-hfpd-voh' target='_blank'>Join Now</a>"
         ]
     };
 
     if (mood && moodTasks[mood]) {
-        moodRoot.innerHTML = `
+        root.innerHTML = `
             <div class="container">
-                <h1>Your Mood: ${mood} 🎭</h1>
-                <h2>Suggestions to Try:</h2>
+                <h1>Your Mood: ${mood} 😃</h1>
                 <ul>
                     ${moodTasks[mood].map(task => `<li>${task}</li>`).join('')}
                 </ul>
-                <button id="backBtn">⬅️ Back to Mood Selection</button>
+                <button id="backBtn">⬅️ Back</button>
             </div>
         `;
 
-        document.getElementById("backBtn").addEventListener("click", () => {
-            window.location.href = "index.html#moodSelection";
+        document.getElementById("backBtn").addEventListener("click", function () {
+            window.location.href = "mood-selection.html";
         });
     } else {
-        moodRoot.innerHTML = `<h1>Invalid Mood Selection</h1>`;
+        root.innerHTML = "<h1>Invalid Mood! Please go back and try again.</h1>";
     }
 });
