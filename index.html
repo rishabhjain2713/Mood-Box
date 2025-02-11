@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mood Box Game</title>
+    <title>Welcome, Gracy!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="root"></div>
-    <script src="app.js" type="module"></script>
+    <div class="container">
+        <h1>Welcome, Gracy! 🎭</h1>
+        <p>Let's see how we can enlighten your mood today.</p>
+        <button id="startBtn">Let's Start!</button>
+    </div>
+    <script>
+        document.getElementById("startBtn").addEventListener("click", function () {
+            window.location.href = "mood-selection.html";
+        });
+    </script>
 </body>
 </html>
