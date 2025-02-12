@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         Sad: [
             { text: "Order Tevaro Coffee(Bill is On Me)", link: "https://www.zomato.com" },
-            { text: "Call Me (Let's Go to Timezone)", action: "call" },
+            { text: "Call Me (Let's Go to Timezone)", action: "map", location: "https://www.google.com/maps/dir//timezone+vasant+kunj/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x390d1d6dbfae8c8b:0xaa6084cc038718c1?sa=X&ved=1t:3061&ictx=111" },
             { text: "Visit CP Hanuman Mandir", action: "map", location: "Hanuman Mandir, CP" }
         ],
         Stressed: [
