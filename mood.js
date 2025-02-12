@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const moodOptions = {
         Happy: [
-            { text: "Watch Friends S05E14", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
-            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com/in/title/70143830?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722874" },
+            { text: "Watch Friends S05E14", link: "https://www.netflix.com/in/title/70153404" },
+            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com/in/title/70143830" },
             { text: "Start Learning Something Motivating", action: "timer" }
         ],
         Angry: [
@@ -14,32 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Listen Without Reacting", action: "timer" },
             { text: "Go to the Gym or Exercise", action: "timer" },
             { text: "Take a Shower", action: "timer" }
-        ],
-        Sad: [
-            { text: "Order Tevaro Coffee (Bill is On Me)", link: "https://www.zomato.com" },
-            { text: "Call Me (Let's Go to Timezone)", action: "call" },
-            { text: "Visit Timezone Vasant Kunj", link: "https://www.google.com/maps/dir//timezone+vasant+kunj/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x390d1d6dbfae8c8b:0xaa6084cc038718c1?sa=X&ved=1t:3061&ictx=111" },
-            { text: "Visit CP Hanuman Mandir", link: "https://www.google.com/maps/search/Hanuman+Mandir+CP" }
-        ],
-        Stressed: [
-            { text: "Relax & Meditate", action: "timer" },
-            { text: "Listen to Podcast", link: "https://open.spotify.com/show/706hylM6zaDW8LrrYxcggQ" },
-            { text: "Listen to Hanuman Chalisa", link: "https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx" },
-            { text: "Read 'The Magic' Book", link: "http://roadtonation.com/wp-content/uploads/2016/07/Rhonda-Byrne-The-Magic.pdf" }
-        ],
-        Bored: [
-            { text: "Read Something Motivating", action: "timer" },
-            { text: "Go to DIY for Shopping", link: "https://www.google.com/maps?rlz=1C1CHBD_enIN1136IN1137&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyDAgCECMYJxiABBiKBTINCAMQABiRAhiABBiKBTINCAQQABiRAhiABBiKBTIMCAUQABhDGIAEGIoFMgwIBhAAGEMYgAQYigUyDAgHEAAYQxiABBiKBTIMCAgQABhDGIAEGIoFMgoICRAAGLEDGIAE0gEIMjg3N2owajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KTvAd75T_Qw5MYDBDa8DL6ge&daddr=3+%26+4,+Ground+Floor,+Unit+No.2,+32,+Bungalow+Rd,+Kamla+Nagar,+New+Delhi,+Delhi+110007" },
-            { text: "Discuss Business Ideas", link: "https://meet.google.com/etk-hfpd-voh" }
-        ],
-        Irritated: [
-            { text: "Try to Meditate", action: "timer" },
-            { text: "Talk to Akshat", action: "timer" },
-            { text: "Watch Think School on YouTube", link: "https://www.youtube.com/c/ThinkSchool" }
-        ],
-        IDontKnow: [
-            { text: "Zindagi mein agar kuch banna ho...", link: "https://youtu.be/YW1ZZTpSIf8?si=iGKGUBMIQbAaLe4Q" },
-            { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Gift: [
             { text: "🎁 Claim Your Gift (Bill is on Me)", link: "https://www.starbucks.in/ordering" },
@@ -59,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const optionsDiv = document.getElementById("options");
 
-        if (moodOptions[mood]) {
+        // ✅ Fix: Ensure moodOptions exists before iterating
+        if (moodOptions[mood] && moodOptions[mood].length > 0) {
             moodOptions[mood].forEach(option => {
                 let button = document.createElement("button");
                 button.textContent = option.text;
