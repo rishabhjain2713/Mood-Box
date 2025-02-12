@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.onclick = () => window.location.href = "tel:+919876543210";
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
-            }
+            }else if (option.action === "gift") {
+            button.onclick = handleGiftSelection;
+        }
 
             optionsDiv.appendChild(button);
         });
