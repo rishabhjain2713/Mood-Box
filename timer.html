@@ -11,7 +11,7 @@
     <div class="container">
         <h1 id="activityTitle">Activity Timer</h1>
         <p id="activityDesc">Get ready to focus!</p>
-        <div id="timer">00:30</div>
+        <div id="timer">30:00</div>
         <button id="startTimer">Start</button>
         <button id="resetTimer">Reset</button>
         <button id="backBtn">⬅ Back</button>
@@ -24,11 +24,11 @@
 
             if (activity) {
                 document.getElementById("activityTitle").textContent = activity;
-                document.getElementById("activityDesc").textContent = "Focus on this activity for 30 seconds.";
+                document.getElementById("activityDesc").textContent = "Focus on this activity for 30 minutes.";
             }
 
             let timer;
-            let timeLeft = 30;
+            let timeLeft = 30 * 60; // 30 minutes in seconds
             const timerDisplay = document.getElementById("timer");
             const startButton = document.getElementById("startTimer");
             const resetButton = document.getElementById("resetTimer");
@@ -54,7 +54,7 @@
 
             resetButton.addEventListener("click", function () {
                 clearInterval(timer);
-                timeLeft = 30;
+                timeLeft = 30 * 60; // Reset to 30 minutes
                 updateTimer();
             });
 
