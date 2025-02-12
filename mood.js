@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const moodOptions = {
         Happy: [
-            { text: "Watch Friends S05E14", link: "https://www.netflix.com" },
-            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com" },
+            { text: "Watch Friends S05E14", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
+            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
             { text: "Start Learning Something Motivating", action: "timer" }
         ],
         Angry: [
