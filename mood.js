@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const moodOptions = {
         Happy: [
-            { text: "Watch Friends S05E14", link: "https://www.netflix.com" },
-            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com" },
+            { text: "Watch Friends S05E14", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
+            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com/in/title/70143830?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722874" },
             { text: "Start Learning Something Motivating", action: "timer" }
         ],
         Angry: [
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Bored: [
             { text: "Read Something Motivating", action: "timer" },
             { text: "Go to DIY for Shopping", action: "map", location: "DIY Store" },
-            { text: "Discuss Business Ideas", action: "timer" }
+            { text: "Discuss Business Ideas", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Irritated: [
             { text: "Try to Meditate", action: "timer" },
@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Watch Think School on YouTube", link: "https://www.youtube.com/c/ThinkSchool" }
         ],
         IDontKnow: [
+            { 
+                text: "Zindagi mein agar kuch banna ho, kuch haasil karna ho, kuch jeetna ho ... toh hamesha dil ki suno ... aur agar dil bhi koi jawab na de toh aankhen band karke apni maa aur papa ka naam lo ... phir dekhna har manzil paar kar jaoge, har mushkil aasaan ho jayegi ... jeet tumhari hogi, sirf tumhari ...", 
+                link: "https://youtu.be/YW1ZZTpSIf8?si=iGKGUBMIQbAaLe4Q" 
+            },
             { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
         ]
     };
