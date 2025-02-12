@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Take a Shower", action: "timer" }
         ],
         Sad: [
-            { text: "Order Tevaro Coffee", link: "https://www.zomato.com" },
+            { text: "Order Tevaro Coffee(Bill is On Me)", link: "https://www.zomato.com" },
             { text: "Call Me (Let's Go to Timezone)", action: "call" },
             { text: "Visit CP Hanuman Mandir", action: "map", location: "Hanuman Mandir, CP" }
         ],
@@ -42,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 link: "https://youtu.be/YW1ZZTpSIf8?si=iGKGUBMIQbAaLe4Q" 
             },
             { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
-        ]
+        ],
+         Gift: [
+        { text: "Your Gift (Anything You Want, Bill is on Me)", link: "https://www.starbucks.in/ordering" }
+    ]
     };
 
     function renderMoodOptions() {
