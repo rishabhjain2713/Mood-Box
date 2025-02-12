@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Gift: [
-            { text: "🎁 Your Gift (Anything You Want, Bill is on Me)", link: "https://www.starbucks.in/ordering" }
+            { text: "🎁 Claim Your Gift (Bill is on Me)", link: "https://www.starbucks.in/ordering" },
+            { text: "💳 Get an Amazon Gift Card", link: "https://www.amazon.in/gift-card-store/" }
         ]
     };
 
@@ -58,14 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const optionsDiv = document.getElementById("options");
 
-        if (mood === "Gift") {
-            optionsDiv.innerHTML = `<p>🎁 Surprise! Click the button below to claim your gift.</p>`;
-        }
-
         if (moodOptions[mood]) {
             moodOptions[mood].forEach(option => {
                 let button = document.createElement("button");
                 button.textContent = option.text;
+                button.classList.add("option-btn");
 
                 if (option.link) {
                     button.onclick = () => window.location.href = option.link;
