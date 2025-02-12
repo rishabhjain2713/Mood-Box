@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const moodOptions = {
         Happy: [
-            { text: "Watch Friends S05E14", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
-            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com/in/title/70153404?s=a&trkid=13747225&trg=wha&vlang=en&clip=81722277" },
+            { text: "Watch Friends S05E14", link: "https://www.netflix.com" },
+            { text: "Watch The Big Bang Theory S02E11", link: "https://www.netflix.com" },
             { text: "Start Learning Something Motivating", action: "timer" }
         ],
         Angry: [
@@ -50,10 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div id="options"></div>
                 <button id="backBtn">⬅ Back to Mood Selection</button>
             </div>
-            <div id="cameraOverlay" class="camera-overlay" style="display: none;">
-                <video id="video" autoplay></video>
-                <button id="closeCamera">Close Camera</button>
-            </div>
         `;
 
         const optionsDiv = document.getElementById("options");
@@ -79,33 +75,40 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("backBtn").addEventListener("click", () => {
             window.location.href = "index.html";
         });
-
-        document.getElementById("closeCamera").addEventListener("click", closeCamera);
     }
 
     function openCamera() {
-        const cameraOverlay = document.getElementById("cameraOverlay");
-        const video = document.getElementById("video");
+        const cameraOverlay = document.createElement("div");
+        cameraOverlay.classList.add("camera-overlay");
 
+        cameraOverlay.innerHTML = `
+            <video id="video" autoplay></video>
+            <button onclick="closeCamera()">Close Camera</button>
+        `;
+
+        document.body.appendChild(cameraOverlay);
+
+        // Open camera only when user clicks the button
         navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                video.srcObject = stream;
-                cameraOverlay.style.display = "flex";
+            .then(function (stream) {
+                document.getElementById("video").srcObject = stream;
             })
-            .catch(err => {
-                alert("Error accessing camera: " + err.message);
+            .catch(function (error) {
+                alert("Camera access denied. Please allow camera permission.");
+                closeCamera();
             });
     }
 
-    function closeCamera() {
-        const cameraOverlay = document.getElementById("cameraOverlay");
-        const video = document.getElementById("video");
+    window.closeCamera = function () {
+        let video = document.getElementById("video");
+        let stream = video.srcObject;
+        let tracks = stream.getTracks();
 
-        if (video.srcObject) {
-            video.srcObject.getTracks().forEach(track => track.stop());
-        }
-        cameraOverlay.style.display = "none";
-    }
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+
+        document.querySelector(".camera-overlay").remove();
+    };
 
     renderMoodOptions();
 });
