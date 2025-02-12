@@ -1,7 +1,9 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
-    background: url('https://img.freepik.com/free-vector/flat-design-adventure-background.jpg') no-repeat center center/cover;
+    background: url('https://img.freepik.com/free-vector/flat-design-adventure-background_23-2149059266.jpg?t=st=1739298014~exp=1739301614~hmac=23ae20961940380969833cf5740eea6b8a22b3339db201fd41cf93e6bcdd8511&w=740') no-repeat center center fixed;
+    background-size: cover;
     padding: 20px;
     color: white;
     height: 100vh;
@@ -11,34 +13,48 @@ body {
     align-items: center;
 }
 
+/* Container for Mood Selection & Results */
 .container {
-    max-width: 600px;
+    max-width: 500px;
     background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Headings */
 h1 {
     font-size: 28px;
     font-weight: bold;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* Paragraphs */
 p {
     font-size: 18px;
     margin-bottom: 20px;
 }
 
+/* Mood Buttons */
+.mood-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+/* Buttons */
 button {
     display: block;
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
     border: none;
     background: linear-gradient(135deg, #ff7eb3, #ff758c);
     color: white;
@@ -55,31 +71,10 @@ button:hover {
     transform: scale(1.05);
 }
 
-.mood-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
+/* Footer */
 footer {
     position: absolute;
     bottom: 20px;
     width: 100%;
     text-align: center;
-}
-
-.call-btn {
-    background: none;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.call-btn:hover {
-    transform: scale(1.1);
 }
