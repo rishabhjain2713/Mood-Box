@@ -69,19 +69,17 @@ footer {
 }
 
 .call-btn {
-    background: #ff4a6e;
+    background: none;
     padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .call-btn:hover {
-    background: #ff2a52;
     transform: scale(1.1);
 }
