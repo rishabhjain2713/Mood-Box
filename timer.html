@@ -3,39 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Activity Timer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
-        <h1>Nice Choice, Gracy! 😊</h1>
-        <p>Choose a timer duration:</p>
-        <button onclick="startTimer(600)">10 Minutes</button>
-        <button onclick="startTimer(1200)">20 Minutes</button>
-        <button onclick="startTimer(1800)">30 Minutes</button>
-        <p id="timerDisplay"></p>
-        <button onclick="goBack()">⬅ Back</button>
+        <h1 id="activityTitle">Activity Timer</h1>
+        <p id="activityDesc">Get ready to focus!</p>
+        <div id="timer">00:30</div>
+        <button id="startTimer">Start</button>
+        <button id="resetTimer">Reset</button>
+        <button id="backBtn">⬅ Back</button>
     </div>
 
     <script>
-        function startTimer(seconds) {
-            let timerDisplay = document.getElementById("timerDisplay");
-            let interval = setInterval(() => {
-                if (seconds <= 0) {
-                    clearInterval(interval);
-                    alert("Time’s up! 🎉");
-                    return;
-                }
-                let min = Math.floor(seconds / 60);
-                let sec = seconds % 60;
-                timerDisplay.innerText = `Time Left: ${min}m ${sec}s`;
-                seconds--;
-            }, 1000);
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activity = urlParams.get("activity");
 
-        function goBack() {
-            window.history.back();
-        }
+            if (activity) {
+                document.getElementById("activityTitle").textContent = activity;
+                document.getElementById("activityDesc").textContent = "Focus on this activity for 30 seconds.";
+            }
+
+            let timer;
+            let timeLeft = 30;
+            const timerDisplay = document.getElementById("timer");
+            const startButton = document.getElementById("startTimer");
+            const resetButton = document.getElementById("resetTimer");
+
+            function updateTimer() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+            }
+
+            startButton.addEventListener("click", function () {
+                clearInterval(timer);
+                timer = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimer();
+                    } else {
+                        clearInterval(timer);
+                        alert("Time's up! Great job!");
+                    }
+                }, 1000);
+            });
+
+            resetButton.addEventListener("click", function () {
+                clearInterval(timer);
+                timeLeft = 30;
+                updateTimer();
+            });
+
+            document.getElementById("backBtn").addEventListener("click", function () {
+                window.history.back();
+            });
+
+            updateTimer();
+        });
     </script>
+
 </body>
 </html>
