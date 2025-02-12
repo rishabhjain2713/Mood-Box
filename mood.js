@@ -38,10 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Watch Think School on YouTube", link: "https://www.youtube.com/c/ThinkSchool" }
         ],
         IDontKnow: [
-            { 
-                text: "Zindagi mein agar kuch banna ho, kuch haasil karna ho, kuch jeetna ho ... toh hamesha dil ki suno ... aur agar dil bhi koi jawab na de toh aankhen band karke apni maa aur papa ka naam lo ... phir dekhna har manzil paar kar jaoge, har mushkil aasaan ho jayegi ... jeet tumhari hogi, sirf tumhari ...", 
-                link: "https://youtu.be/YW1ZZTpSIf8?si=iGKGUBMIQbAaLe4Q" 
-            },
+            { text: "Zindagi mein agar kuch banna ho...", link: "https://youtu.be/YW1ZZTpSIf8?si=iGKGUBMIQbAaLe4Q" },
             { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Gift: [
@@ -61,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const optionsDiv = document.getElementById("options");
 
-        // ✅ Check if `moodOptions[mood]` exists to prevent errors
+        if (mood === "Gift") {
+            optionsDiv.innerHTML = `<p>🎁 Surprise! Click the button below to claim your gift.</p>`;
+        }
+
         if (moodOptions[mood]) {
             moodOptions[mood].forEach(option => {
                 let button = document.createElement("button");
