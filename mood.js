@@ -69,13 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (option.action === "timer") {
                 button.onclick = () => window.location.href = `timer.html?activity=${encodeURIComponent(option.text)}`;
             } else if (option.action === "call") {
-                button.onclick = () => window.location.href = "tel:+919876543210";
+                button.onclick = () => window.location.href = "tel:+919170483615";
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
-            }else if (option.action === "gift") {
-            button.onclick = handleGiftSelection;
+            } else if (option.action === "gift") {
+              button.onclick = handleGiftSelection;
         }
-
             optionsDiv.appendChild(button);
         });
 
