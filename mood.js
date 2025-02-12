@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Take a Shower", action: "timer" }
         ],
         Sad: [
-            { text: "Look in the Mirror & Motivate Yourself", action: "timer" },
+            { text: "Look in the Mirror & Motivate Yourself", action: "camera" },
             { text: "Order Tevaro Coffee", link: "https://www.zomato.com" },
             { text: "Call Me (Let's Go to Timezone)", action: "call" },
             { text: "Visit CP Hanuman Mandir", action: "map", location: "Hanuman Mandir, CP" }
@@ -42,6 +42,33 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
+    function openCamera() {
+        const cameraContainer = document.createElement("div");
+        cameraContainer.innerHTML = `
+            <div class="camera-overlay">
+                <video id="cameraFeed" autoplay></video>
+                <button id="closeCamera">Close</button>
+            </div>
+        `;
+        document.body.appendChild(cameraContainer);
+
+        const videoElement = document.getElementById("cameraFeed");
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // "user" is for the front camera
+            .then((stream) => {
+                videoElement.srcObject = stream;
+            })
+            .catch((error) => {
+                alert("Could not access camera: " + error.message);
+                cameraContainer.remove();
+            });
+
+        document.getElementById("closeCamera").addEventListener("click", () => {
+            let tracks = videoElement.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+            cameraContainer.remove();
+        });
+    }
+
     function renderMoodOptions() {
         root.innerHTML = `
             <div class="container">
@@ -65,6 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.onclick = () => window.location.href = "tel:+919876543210";
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
+            } else if (option.action === "camera") {
+                button.onclick = openCamera;
             }
 
             optionsDiv.appendChild(button);
