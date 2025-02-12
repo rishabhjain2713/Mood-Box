@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div id="options"></div>
                 <button id="backBtn">⬅ Back to Mood Selection</button>
             </div>
+            <div id="cameraOverlay" class="camera-overlay" style="display: none;">
+                <video id="video" autoplay></video>
+                <button id="closeCamera">Close Camera</button>
+            </div>
         `;
 
         const optionsDiv = document.getElementById("options");
@@ -66,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
             } else if (option.action === "camera") {
-                openCamera();
+                button.onclick = openCamera;
             }
 
             optionsDiv.appendChild(button);
@@ -75,33 +79,32 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("backBtn").addEventListener("click", () => {
             window.location.href = "index.html";
         });
+
+        document.getElementById("closeCamera").addEventListener("click", closeCamera);
     }
 
     function openCamera() {
-        const cameraOverlay = document.createElement("div");
-        cameraOverlay.className = "camera-overlay";
-        cameraOverlay.innerHTML = `
-            <video id="cameraFeed" autoplay></video>
-            <button id="closeCamera">Close</button>
-        `;
-        document.body.appendChild(cameraOverlay);
+        const cameraOverlay = document.getElementById("cameraOverlay");
+        const video = document.getElementById("video");
 
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
-                document.getElementById("cameraFeed").srcObject = stream;
+                video.srcObject = stream;
+                cameraOverlay.style.display = "flex";
             })
-            .catch(error => {
-                alert("Unable to access camera. Please check permissions.");
-                document.body.removeChild(cameraOverlay);
+            .catch(err => {
+                alert("Error accessing camera: " + err.message);
             });
+    }
 
-        document.getElementById("closeCamera").addEventListener("click", () => {
-            let video = document.getElementById("cameraFeed");
-            let stream = video.srcObject;
-            let tracks = stream.getTracks();
-            tracks.forEach(track => track.stop());
-            document.body.removeChild(cameraOverlay);
-        });
+    function closeCamera() {
+        const cameraOverlay = document.getElementById("cameraOverlay");
+        const video = document.getElementById("video");
+
+        if (video.srcObject) {
+            video.srcObject.getTracks().forEach(track => track.stop());
+        }
+        cameraOverlay.style.display = "none";
     }
 
     renderMoodOptions();
