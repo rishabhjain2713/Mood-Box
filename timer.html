@@ -4,19 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="timer.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Nice Choice, Gracy!</h1>
-        <p>Select a time to start:</p>
-        <div class="timer-options">
-            <button onclick="startTimer(10)">10 Min</button>
-            <button onclick="startTimer(20)">20 Min</button>
-            <button onclick="startTimer(30)">30 Min</button>
-        </div>
-        <div id="timer-display"></div>
+        <h1>Nice Choice, Gracy! 😊</h1>
+        <p>Choose a timer duration:</p>
+        <button onclick="startTimer(600)">10 Minutes</button>
+        <button onclick="startTimer(1200)">20 Minutes</button>
+        <button onclick="startTimer(1800)">30 Minutes</button>
+        <p id="timerDisplay"></p>
+        <button onclick="goBack()">⬅ Back</button>
     </div>
+
+    <script>
+        function startTimer(seconds) {
+            let timerDisplay = document.getElementById("timerDisplay");
+            let interval = setInterval(() => {
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    alert("Time’s up! 🎉");
+                    return;
+                }
+                let min = Math.floor(seconds / 60);
+                let sec = seconds % 60;
+                timerDisplay.innerText = `Time Left: ${min}m ${sec}s`;
+                seconds--;
+            }, 1000);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
