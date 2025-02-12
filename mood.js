@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Angry: [
             { text: "Try to Breathe", action: "timer" },
             { text: "Listen Without Reacting", action: "timer" },
-            { text: "Go to the Gym or Exercise", action: "timer" },
+            { text: "Go to the Gym or Exercise", link: "https://www.google.com/maps?rlz=1C1CHBD_enIN1136IN1137&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdeygX34_Qw5MZIAKUFRAeGE&daddr=1st+Floor,+No+B/4/8,+Model+Town+Phase+I,+Block+B,+Model+Town+Phase+I,+Model+Town,+New+Delhi,+Delhi,+110009" },
             { text: "Take a Shower", action: "timer" }
         ],
         Sad: [
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (option.action === "timer") {
                 button.onclick = () => window.location.href = `timer.html?activity=${encodeURIComponent(option.text)}`;
             } else if (option.action === "call") {
-                button.onclick = () => window.location.href = "tel:+919876543210";
+                button.onclick = () => window.location.href = "tel:+919170483615";
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
             }
