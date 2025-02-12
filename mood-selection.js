@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <button data-mood="Bored">😐 Bored</button>
             <button data-mood="Irritated">😠 Irritated</button>
             <button data-mood="IDontKnow">🤷‍♂️ I Don't Know</button>
-            <button data-mood="Gift">❤ GIFT </button>
         </div>
     `;
 
