@@ -42,33 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
-    function openCamera() {
-        const cameraContainer = document.createElement("div");
-        cameraContainer.innerHTML = `
-            <div class="camera-overlay">
-                <video id="cameraFeed" autoplay></video>
-                <button id="closeCamera">Close</button>
-            </div>
-        `;
-        document.body.appendChild(cameraContainer);
-
-        const videoElement = document.getElementById("cameraFeed");
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // "user" is for the front camera
-            .then((stream) => {
-                videoElement.srcObject = stream;
-            })
-            .catch((error) => {
-                alert("Could not access camera: " + error.message);
-                cameraContainer.remove();
-            });
-
-        document.getElementById("closeCamera").addEventListener("click", () => {
-            let tracks = videoElement.srcObject.getTracks();
-            tracks.forEach(track => track.stop());
-            cameraContainer.remove();
-        });
-    }
-
     function renderMoodOptions() {
         root.innerHTML = `
             <div class="container">
@@ -93,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (option.action === "map") {
                 button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
             } else if (option.action === "camera") {
-                button.onclick = openCamera;
+                openCamera();
             }
 
             optionsDiv.appendChild(button);
@@ -101,6 +74,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("backBtn").addEventListener("click", () => {
             window.location.href = "index.html";
+        });
+    }
+
+    function openCamera() {
+        const cameraOverlay = document.createElement("div");
+        cameraOverlay.className = "camera-overlay";
+        cameraOverlay.innerHTML = `
+            <video id="cameraFeed" autoplay></video>
+            <button id="closeCamera">Close</button>
+        `;
+        document.body.appendChild(cameraOverlay);
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                document.getElementById("cameraFeed").srcObject = stream;
+            })
+            .catch(error => {
+                alert("Unable to access camera. Please check permissions.");
+                document.body.removeChild(cameraOverlay);
+            });
+
+        document.getElementById("closeCamera").addEventListener("click", () => {
+            let video = document.getElementById("cameraFeed");
+            let stream = video.srcObject;
+            let tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
+            document.body.removeChild(cameraOverlay);
         });
     }
 
