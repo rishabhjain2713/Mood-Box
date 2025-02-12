@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Take a Shower", action: "timer" }
         ],
         Sad: [
-            { text: "Order Tevaro Coffee(Bill is On Me)", link: "https://www.zomato.com" },
+            { text: "Order Tevaro Coffee (Bill is On Me)", link: "https://www.zomato.com" },
             { text: "Call Me (Let's Go to Timezone)", action: "call" },
-            { text: "Call Me (Let's Go to Timezone)", action: "map", location: "https://www.google.com/maps/dir//timezone+vasant+kunj/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x390d1d6dbfae8c8b:0xaa6084cc038718c1?sa=X&ved=1t:3061&ictx=111" },
-            { text: "Visit CP Hanuman Mandir", action: "map", location: "Hanuman Mandir, CP" }
+            { text: "Visit Timezone Vasant Kunj", link: "https://www.google.com/maps/dir//timezone+vasant+kunj/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x390d1d6dbfae8c8b:0xaa6084cc038718c1?sa=X&ved=1t:3061&ictx=111" },
+            { text: "Visit CP Hanuman Mandir", link: "https://www.google.com/maps/search/Hanuman+Mandir+CP" }
         ],
         Stressed: [
             { text: "Relax & Meditate", action: "timer" },
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         Bored: [
             { text: "Read Something Motivating", action: "timer" },
-            { text: "Go to DIY for Shopping", action: "map", location: "https://www.google.com/maps?rlz=1C1CHBD_enIN1136IN1137&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyDAgCECMYJxiABBiKBTINCAMQABiRAhiABBiKBTINCAQQABiRAhiABBiKBTIMCAUQABhDGIAEGIoFMgwIBhAAGEMYgAQYigUyDAgHEAAYQxiABBiKBTIMCAgQABhDGIAEGIoFMgoICRAAGLEDGIAE0gEIMjg3N2owajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KTvAd75T_Qw5MYDBDa8DL6ge&daddr=3+%26+4,+Ground+Floor,+Unit+No.2,+32,+Bungalow+Rd,+Kamla+Nagar,+New+Delhi,+Delhi+110007" },
+            { text: "Go to DIY for Shopping", link: "https://www.google.com/maps?rlz=1C1CHBD_enIN1136IN1137&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyDAgCECMYJxiABBiKBTINCAMQABiRAhiABBiKBTINCAQQABiRAhiABBiKBTIMCAUQABhDGIAEGIoFMgwIBhAAGEMYgAQYigUyDAgHEAAYQxiABBiKBTIMCAgQABhDGIAEGIoFMgoICRAAGLEDGIAE0gEIMjg3N2owajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KTvAd75T_Qw5MYDBDa8DL6ge&daddr=3+%26+4,+Ground+Floor,+Unit+No.2,+32,+Bungalow+Rd,+Kamla+Nagar,+New+Delhi,+Delhi+110007" },
             { text: "Discuss Business Ideas", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Irritated: [
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             { text: "Join Google Meet", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
-         Gift: [
-        { text: "Your Gift (Anything You Want, Bill is on Me)", link: "https://www.starbucks.in/ordering" }
-    ]
+        Gift: [
+            { text: "🎁 Your Gift (Anything You Want, Bill is on Me)", link: "https://www.starbucks.in/ordering" }
+        ]
     };
 
     function renderMoodOptions() {
@@ -60,23 +60,26 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         const optionsDiv = document.getElementById("options");
-        moodOptions[mood].forEach(option => {
-            let button = document.createElement("button");
-            button.textContent = option.text;
 
-            if (option.link) {
-                button.onclick = () => window.location.href = option.link;
-            } else if (option.action === "timer") {
-                button.onclick = () => window.location.href = `timer.html?activity=${encodeURIComponent(option.text)}`;
-            } else if (option.action === "call") {
-                button.onclick = () => window.location.href = "tel:+919170483615";
-            } else if (option.action === "map") {
-                button.onclick = () => window.location.href = `https://www.google.com/maps/search/${option.location}`;
-            } else if (option.action === "gift") {
-              button.onclick = handleGiftSelection;
+        // ✅ Check if `moodOptions[mood]` exists to prevent errors
+        if (moodOptions[mood]) {
+            moodOptions[mood].forEach(option => {
+                let button = document.createElement("button");
+                button.textContent = option.text;
+
+                if (option.link) {
+                    button.onclick = () => window.location.href = option.link;
+                } else if (option.action === "timer") {
+                    button.onclick = () => window.location.href = `timer.html?activity=${encodeURIComponent(option.text)}`;
+                } else if (option.action === "call") {
+                    button.onclick = () => window.location.href = "tel:+919170483615";
+                }
+
+                optionsDiv.appendChild(button);
+            });
+        } else {
+            optionsDiv.innerHTML = "<p>No options available for this mood.</p>";
         }
-            optionsDiv.appendChild(button);
-        });
 
         document.getElementById("backBtn").addEventListener("click", () => {
             window.location.href = "index.html";
