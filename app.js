@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         root.innerHTML = `
             <div class="container">
                 <h1>Welcome Gracy! Let's Play 🎭</h1>
-                <p>Let's see how we can enlighten your mood.</p>
+                <p>Let's see how I can enlighten your mood.</p>
                 <button id="startBtn">Let's Start</button>
             </div>
         `;
