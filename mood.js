@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
             { text: "Relax & Meditate", action: "timer" },
             { text: "Listen to Podcast", link: "https://open.spotify.com/show/706hylM6zaDW8LrrYxcggQ" },
             { text: "Listen to Hanuman Chalisa", link: "https://open.spotify.com/track/6H7fLdt0AeWpuxUKXuXWrx" },
-            { text: "Read 'The Magic' Book", link: "https://books.google.com" }
+            { text: "Read 'The Magic' Book", link: "http://roadtonation.com/wp-content/uploads/2016/07/Rhonda-Byrne-The-Magic.pdf" }
         ],
         Bored: [
             { text: "Read Something Motivating", action: "timer" },
-            { text: "Go to DIY for Shopping", action: "map", location: "DIY Store" },
+            { text: "Go to DIY for Shopping", action: "map", location: "https://www.google.com/maps?rlz=1C1CHBD_enIN1136IN1137&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyDAgCECMYJxiABBiKBTINCAMQABiRAhiABBiKBTINCAQQABiRAhiABBiKBTIMCAUQABhDGIAEGIoFMgwIBhAAGEMYgAQYigUyDAgHEAAYQxiABBiKBTIMCAgQABhDGIAEGIoFMgoICRAAGLEDGIAE0gEIMjg3N2owajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KTvAd75T_Qw5MYDBDa8DL6ge&daddr=3+%26+4,+Ground+Floor,+Unit+No.2,+32,+Bungalow+Rd,+Kamla+Nagar,+New+Delhi,+Delhi+110007" },
             { text: "Discuss Business Ideas", link: "https://meet.google.com/etk-hfpd-voh" }
         ],
         Irritated: [
